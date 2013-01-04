@@ -12,6 +12,7 @@
         
     },
     "minimum-stability": "dev",
+    "autoload": {"psr-0": {"": "src"}},
     "config": {
         "bin-dir": "bin/"
     }

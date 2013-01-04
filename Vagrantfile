@@ -10,8 +10,10 @@ Vagrant::Config.run do |config|
         web_config.vm.network :hostonly, "172.22.22.22"
         web_config.vm.share_folder "v-root", "/vagrant", "./" #, :nfs => true
         web_config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
-        web_config.vm.forward_port 80, 8080
-        
+        web_config.vm.forward_port 80, 8080 #apache2
+        web_config.vm.forward_port 5432, 8032 #postgresql
+        web_config.vm.forward_port 3306, 8006 #mysql
+
         web_config.vm.provision :chef_solo do |chef|
             chef.cookbooks_path = ["cookbooks", "custom_cookbooks"]
             
